@@ -9,6 +9,7 @@ require('dotenv').config();
 const port = process.env.PORT;
 // Connect to the database
 
+app.set('port', process.env.PORT || 5000);
 
 mongoose
   .connect('mongodb+srv://paaai:5iPc5VNPGfXxwxF6@cluster0.xfch9m1.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true })
@@ -28,6 +29,8 @@ app.use((err, req, res, next) => {
   console.log(err);
   next();
 });
+
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
